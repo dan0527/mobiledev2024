@@ -1,6 +1,7 @@
 package vn.edu.usth.usthweather;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,23 +9,26 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class WeatherActivity extends AppCompatActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_weather2);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-    }
+    public class WeatherActivity extends AppCompatActivity {
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_weather); // Set your layout here
+            // Create a new WeatherFragment
+            vn.edu.usth.usthweather.WeatherFragment weatherFragment = new vn.edu.usth.usthweather.WeatherFragment();
+            // Add the WeatherFragment
+            getSupportFragmentManager().beginTransaction().add(R.id.main, weatherFragment).commit();
+            // Create a new ForecastFragment to be placed in the activity
+            ForecastFragment forecastFragment = new ForecastFragment();
+            // Add the ForecastFragment to the 'container' FrameLayout
+            getSupportFragmentManager().beginTransaction().add(R.id.main, forecastFragment).commit();
+            Log.i("MyApp", "onCreate called"); // Log a message
+        };
 
-    @Override
+       @Override
     protected void onStart() {
-        super.onStart()
+        super.onStart();
     }
     @Override
     protected void onResume(){
@@ -38,10 +42,9 @@ public class WeatherActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-    }
+    };
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-    }
-}
+    }}
