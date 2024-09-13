@@ -5,20 +5,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WeatherActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".WeatherActivity">
 
-    <fragment
-        android:id="@+id/weatherFragment"
-        android:name="vn.edu.usth.usthweather.WeatherFragment"
-        android:layout_width="wrap_content"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="20dp"/>
-    <fragment
-        android:id="@+id/forecastFragment"
-        android:name="vn.edu.usth.usthweather.ForecastFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp" />
+        app:tabIndicatorColor="#31b1e0"
+        app:tabSelectedTextColor="@color/black"
+        app:tabTextColor="@android:color/darker_gray" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!--    <ImageView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:src="@drawable/cloudy_day_forecast_sun_icon"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"/>-->
+
 </LinearLayout>
