@@ -13,6 +13,9 @@
         android:theme="@style/Theme.USTHWeather"
         tools:targetApi="31">
         <activity
+            android:name=".WeatherPagerAdapter"
+            android:exported="false" />
+        <activity
             android:name=".WeatherActivity"
             android:exported="true"
             android:label="@string/title_activity_weather"

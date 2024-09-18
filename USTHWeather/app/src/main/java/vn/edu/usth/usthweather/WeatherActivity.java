@@ -8,21 +8,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.viewpager.widget.ViewPager;
+
+import com.google.android.material.tabs.TabLayout;
 
 
-    public class WeatherActivity extends AppCompatActivity {
+public class WeatherActivity extends AppCompatActivity {
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_weather); // Set your layout here
-            // Create a new WeatherFragment
-            vn.edu.usth.usthweather.WeatherFragment weatherFragment = new vn.edu.usth.usthweather.WeatherFragment();
-            // Add the WeatherFragment
-            getSupportFragmentManager().beginTransaction().add(R.id.main, weatherFragment).commit();
-            // Create a new ForecastFragment to be placed in the activity
-            ForecastFragment forecastFragment = new ForecastFragment();
-            // Add the ForecastFragment to the 'container' FrameLayout
-            getSupportFragmentManager().beginTransaction().add(R.id.main, forecastFragment).commit();
+            // Create Adapter
+            WeatherPagerAdapter adapter = new WeatherPagerAdapter(getSupportFragmentManager());
+            // Create and set ViewPager
+            ViewPager viewPager = findViewById(R.id.view_pager);
+            viewPager.setAdapter(adapter);
+            // Create and set TabLayout
+            TabLayout tabLayout = findViewById(R.id.tabLayout);
+            tabLayout.setupWithViewPager(viewPager);
             Log.i("MyApp", "onCreate called"); // Log a message
         };
 
